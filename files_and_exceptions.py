@@ -39,7 +39,7 @@ def read_file_to_dict(filename):
                 diccionario[keys[i]] = list()
                 diccionario[keys[i]].append(float(vals[i]))
         return diccionario
-    except FileNotFoundError:
+    except FileNotFoundError as error:
         raise FileNotFoundError("no se pudo encontrar el archivo")
 
 
@@ -55,8 +55,6 @@ def process_dict(data):
         for valor in range(len(data[producto])):
             divicion +=1
             suma += data[producto][valor]
-        data[producto] = f"ventas totales ${suma}", f"promedio ${suma/divicion}"
-        #print(divicion)
+        print (f"{producto}: ventas totales ${suma:.2f}, promedio ${(suma/divicion):.2f}")
         divicion = 0
         suma = 0
-    return data
